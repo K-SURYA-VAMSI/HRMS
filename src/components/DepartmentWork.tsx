@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,8 +17,26 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-// Mock data for tasks
-const MOCK_TASKS = [
+type BaseTask = {
+  id: string;
+  title: string;
+  description: string;
+  priority: string;
+  status: string;
+  progress: number;
+  assignedBy: string;
+  department: string;
+}
+
+type ActiveTask = BaseTask & {
+  dueDate: string;
+}
+
+type CompletedTask = BaseTask & {
+  completedDate: string;
+}
+
+const MOCK_TASKS: ActiveTask[] = [
   { 
     id: "1", 
     title: "Update CSS for the login page",
@@ -55,8 +72,7 @@ const MOCK_TASKS = [
   },
 ];
 
-// Mock data for completed tasks
-const MOCK_COMPLETED_TASKS = [
+const MOCK_COMPLETED_TASKS: CompletedTask[] = [
   { 
     id: "4", 
     title: "Implement user authentication",
@@ -92,7 +108,7 @@ const formatDate = (dateString: string) => {
 
 const DepartmentWork = () => {
   const [activeTab, setActiveTab] = useState("active");
-  const [selectedTask, setSelectedTask] = useState<(typeof MOCK_TASKS[0] | typeof MOCK_COMPLETED_TASKS[0]) | null>(null);
+  const [selectedTask, setSelectedTask] = useState<ActiveTask | CompletedTask | null>(null);
   const [updateComment, setUpdateComment] = useState("");
   const [taskProgress, setTaskProgress] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
@@ -120,6 +136,13 @@ const DepartmentWork = () => {
     task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     task.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const getDisplayDate = (task: ActiveTask | CompletedTask) => {
+    if ('dueDate' in task) {
+      return formatDate(task.dueDate);
+    }
+    return formatDate(task.completedDate);
+  };
 
   return (
     <div className="space-y-6">
@@ -217,7 +240,7 @@ const DepartmentWork = () => {
                                     </div>
                                     <div>
                                       <p className="font-medium text-muted-foreground">Due Date</p>
-                                      <p>{formatDate(selectedTask.dueDate)}</p>
+                                      <p>{getDisplayDate(selectedTask)}</p>
                                     </div>
                                     <div>
                                       <p className="font-medium text-muted-foreground">Assigned By</p>
