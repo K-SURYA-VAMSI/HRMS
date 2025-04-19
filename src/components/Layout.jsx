@@ -1,15 +1,8 @@
-
-import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Sidebar from "./Sidebar";
 
-type LayoutProps = {
-  children: ReactNode;
-  requiredRole?: "hr" | "employee";
-};
-
-const Layout = ({ children, requiredRole }: LayoutProps) => {
+const Layout = ({ children, requiredRole }) => {
   const { user, isAuthenticated, isLoading } = useAuth();
 
   // Show loading state
@@ -40,4 +33,4 @@ const Layout = ({ children, requiredRole }: LayoutProps) => {
   );
 };
 
-export default Layout;
+export default Layout; 

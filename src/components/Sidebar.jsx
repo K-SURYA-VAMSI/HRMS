@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -21,18 +20,12 @@ import {
   Search,
 } from "lucide-react";
 
-type SidebarLink = {
-  href: string;
-  label: string;
-  icon: React.ElementType;
-};
-
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { user, logout } = useAuth();
   const location = useLocation();
 
-  const employeeLinks: SidebarLink[] = [
+  const employeeLinks = [
     { href: "/dashboard", label: "Dashboard", icon: FileText },
     { href: "/dashboard/attendance", label: "Attendance", icon: Clock },
     { href: "/dashboard/leave-requests", label: "Leave Requests", icon: Calendar },
@@ -40,7 +33,7 @@ const Sidebar = () => {
     { href: "/dashboard/department-work", label: "Department Work", icon: FileIcon },
   ];
 
-  const hrLinks: SidebarLink[] = [
+  const hrLinks = [
     { href: "/hr-dashboard", label: "Dashboard", icon: FileText },
     { href: "/hr-dashboard/employees", label: "Employees", icon: Users },
     { href: "/hr-dashboard/recruitment", label: "Recruitment", icon: FilePlus },
@@ -127,4 +120,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Sidebar; 

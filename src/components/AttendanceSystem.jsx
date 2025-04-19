@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,8 +13,8 @@ const MOCK_ATTENDANCE = [
   { date: "2025-04-14", checkIn: "", checkOut: "", status: "Absent" },
 ];
 
-const formatDate = (dateString: string) => {
-  const options: Intl.DateTimeFormatOptions = { 
+const formatDate = (dateString) => {
+  const options = { 
     weekday: 'short', 
     year: 'numeric', 
     month: 'short', 
@@ -212,4 +211,4 @@ const AttendanceSystem = () => {
   );
 };
 
-export default AttendanceSystem;
+export default AttendanceSystem; 

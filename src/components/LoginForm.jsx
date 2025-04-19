@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -18,11 +17,11 @@ import { Briefcase, Users } from "lucide-react";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [activeRole, setActiveRole] = useState<"employee" | "hr">("employee");
+  const [activeRole, setActiveRole] = useState("employee");
   
   const { login, isLoading } = useAuth();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password, activeRole);
   };
@@ -36,7 +35,7 @@ const LoginForm = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs value={activeRole} onValueChange={(v) => setActiveRole(v as "employee" | "hr")} className="w-full">
+        <Tabs value={activeRole} onValueChange={(v) => setActiveRole(v)} className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-4">
             <TabsTrigger value="employee" className="flex items-center gap-2">
               <Users size={16} />
@@ -116,4 +115,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginForm; 

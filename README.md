@@ -1,73 +1,104 @@
-# Welcome to your Lovable project
+# Workwise Management System
 
-## Project info
+A comprehensive HR and employee management system built with modern web technologies.
 
-**URL**: https://lovable.dev/projects/40b2dbae-8045-446e-a2e1-294534cf6e79
+## Overview
 
-## How can I edit this code?
+Workwise Management System is a full-featured HR management platform that helps organizations streamline their human resources processes. The system provides separate interfaces for employees and HR personnel, with role-based access control and specialized features for each user type.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+### Employee Features
+- **Dashboard**: Personalized dashboard with key information and quick actions
+- **Attendance System**: Track attendance, view attendance history, and request time off
+- **Leave Requests**: Submit and track leave requests
+- **Job Roles**: View job descriptions and career paths
+- **Department Work**: Collaborate with team members and track department activities
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/40b2dbae-8045-446e-a2e1-294534cf6e79) and start prompting.
+### HR Features
+- **HR Dashboard**: Comprehensive overview of HR metrics and activities
+- **Employee Management**: Manage employee profiles, roles, and departments
+- **Recruitment Panel**: Post jobs, manage applications, and track the hiring process
+- **Leave Management**: Approve/reject leave requests and manage leave policies
+- **Payroll System**: Process payroll, manage deductions, and generate reports
 
-Changes made via Lovable will be committed automatically to this repo.
+## Technology Stack
 
-**Use your preferred IDE**
+- **Frontend Framework**: React 18
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **State Management**: React Context API
+- **Data Fetching**: TanStack Query (React Query)
+- **Routing**: React Router v6
+- **Form Handling**: React Hook Form with Zod validation
+- **Notifications**: Sonner toast notifications
+- **Icons**: Lucide React
+- **Charts**: Recharts
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+- Node.js (v16 or higher)
+- npm (v7 or higher)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. Clone the repository:
+   ```sh
+   git clone <repository-url>
+   cd workwise-management-system
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+3. Start the development server:
+   ```sh
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Project Structure
+
+```
+workwise-management-system/
+├── src/
+│   ├── components/       # Reusable UI components
+│   │   ├── ui/           # UI component library
+│   │   └── ...           # Application-specific components
+│   ├── context/          # React context providers
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Utility functions and helpers
+│   ├── pages/            # Page components
+│   ├── App.jsx           # Main application component
+│   └── main.jsx          # Application entry point
+├── public/               # Static assets
+├── index.html            # HTML template
+└── package.json          # Project dependencies and scripts
 ```
 
-**Edit a file directly in GitHub**
+## Development
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Linting**: `npm run lint`
+- **Building**: `npm run build`
+- **Preview Build**: `npm run preview`
 
-**Use GitHub Codespaces**
+## Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The application can be deployed to any static hosting service:
 
-## What technologies are used for this project?
+1. Build the application:
+   ```sh
+   npm run build
+   ```
 
-This project is built with:
+2. Deploy the contents of the `dist` directory to your hosting service.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## License
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/40b2dbae-8045-446e-a2e1-294534cf6e79) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is licensed under the MIT License - see the LICENSE file for details.

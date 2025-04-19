@@ -1,24 +1,8 @@
-
-import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-type User = {
-  id: string;
-  name: string;
-  email: string;
-  role: "hr" | "employee";
-};
-
-type AuthContextType = {
-  user: User | null;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  login: (email: string, password: string, role: "hr" | "employee") => Promise<void>;
-  logout: () => void;
-};
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext(undefined);
 
 // Mock user data - replace with actual API calls in production
 const MOCK_USERS = [
@@ -27,20 +11,20 @@ const MOCK_USERS = [
     name: "HR Admin",
     email: "hr@example.com",
     password: "password123",
-    role: "hr" as const,
+    role: "hr",
   },
   {
     id: "2",
     name: "John Employee",
     email: "employee@example.com",
     password: "password123",
-    role: "employee" as const,
+    role: "employee",
   },
 ];
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,7 +36,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(false);
   }, []);
 
-  const login = async (email: string, password: string, role: "hr" | "employee") => {
+  const login = async (email, password, role) => {
     setIsLoading(true);
     
     try {
@@ -115,4 +99,4 @@ export const useAuth = () => {
     throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
-};
+}; 

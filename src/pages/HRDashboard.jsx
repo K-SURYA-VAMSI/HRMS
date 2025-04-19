@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
@@ -196,4 +195,4 @@ const HRDashboard = () => {
   );
 };
 
-export default HRDashboard;
+export default HRDashboard; 
