@@ -26,6 +26,28 @@ const userSchema = new mongoose.Schema({
     enum: ['hr', 'employee'],
     required: [true, 'Please specify user role']
   },
+  employmentStatus: {
+    type: String,
+    enum: ['pending', 'active', 'inactive'],
+    default: 'pending'
+  },
+  position: {
+    type: String,
+    default: null
+  },
+  department: {
+    type: String,
+    default: null
+  },
+  applicationStatus: {
+    type: String,
+    enum: ['not_applied', 'pending', 'reviewing', 'accepted', 'rejected'],
+    default: 'not_applied'
+  },
+  joinDate: {
+    type: Date,
+    default: null
+  },
   passwordResetToken: String,
   passwordResetExpires: Date,
   active: {
