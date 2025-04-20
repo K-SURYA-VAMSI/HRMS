@@ -1,4 +1,4 @@
-# Workwise Management System
+# HRMS
 
 A comprehensive HR and employee management system built with modern web technologies.
 
