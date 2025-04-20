@@ -7,6 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 
 // Pages
 import Index from "./pages/Index";
+import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import HRDashboard from "./pages/HRDashboard";
 import NotFound from "./pages/NotFound";
@@ -35,6 +36,7 @@ const App = () => (
           <Routes>
             {/* Authentication */}
             <Route path="/" element={<Index />} />
+            <Route path="/register" element={<Register />} />
 
             {/* Employee Routes */}
             <Route path="/dashboard" element={<Dashboard />} />
