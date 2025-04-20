@@ -13,17 +13,27 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Briefcase, Users } from "lucide-react";
+import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [activeRole, setActiveRole] = useState("employee");
+  const [error, setError] = useState("");
   
   const { login, isLoading } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(email, password, activeRole);
+    setError("");
+    
+    try {
+      await login(email, password, activeRole);
+    } catch (err) {
+      setError(err.message || "Login failed. Please try again.");
+      toast.error(err.message || "Login failed. Please try again.");
+    }
   };
 
   return (
@@ -49,6 +59,9 @@ const LoginForm = () => {
           
           <TabsContent value="employee">
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="text-red-500 text-sm text-center">{error}</div>
+              )}
               <div className="space-y-2">
                 <Label htmlFor="employee-email">Email</Label>
                 <Input
@@ -79,6 +92,9 @@ const LoginForm = () => {
           
           <TabsContent value="hr">
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="text-red-500 text-sm text-center">{error}</div>
+              )}
               <div className="space-y-2">
                 <Label htmlFor="hr-email">Email</Label>
                 <Input
@@ -108,8 +124,18 @@ const LoginForm = () => {
           </TabsContent>
         </Tabs>
       </CardContent>
-      <CardFooter className="flex justify-center text-sm text-muted-foreground">
-        Demo credentials: hr@example.com / employee@example.com (password: password123)
+      <CardFooter className="flex flex-col gap-2">
+        <div className="text-sm text-center text-gray-500">
+          <Link to="/forgot-password" className="text-hrms-purple hover:underline">
+            Forgot your password?
+          </Link>
+        </div>
+        <div className="text-sm text-center text-gray-500">
+          Don't have an account?{" "}
+          <Link to="/register" className="text-hrms-purple hover:underline">
+            Register here
+          </Link>
+        </div>
       </CardFooter>
     </Card>
   );
